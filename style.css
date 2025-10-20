@@ -1,0 +1,274 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #343a40;
+    --border-color: #e9ecef;
+    --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI';
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Dashboard Layout */
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "header header"
+        "sidebar main";
+    min-height: 100vh;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Header */
+
+.dashboard-header {
+    grid-area: header;
+    background-color: var(--card-background);
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    border-left: 5px solid var(--primary-color);
+}
+
+.dashboard-header h1 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+/* Sidebar (Filters) */
+.sidebar-filters {
+    grid-area: sidebar;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar-filters h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.filter-group {
+    margin-bottom: 15px;
+}
+
+.filter-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+/* Form Elements Styling */
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.range-inputs {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.range-inputs input {
+    flex-grow: 1;
+}
+
+.range-inputs span {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* Buttons */
+
+.apply-filters-btn,
+.clear-filters-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.apply-filters-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.apply-filters-btn:hover {
+    background-color: #0056b3;
+}
+
+.clear-filters-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.clear-filters-btn:hover {
+    background-color: #5a6268;
+}
+
+
+/* Main Data View */
+
+.data-view {
+    grid-area: main;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+}
+
+.data-view h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Table Styling */
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.product-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.product-data-table th,
+.product-data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.product-data-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    position: sticky;
+    top: 0;
+}
+
+/* Table Row Hover Effect */
+
+.product-data-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.product-data-table th:nth-child(1),
+.product-data-table td:nth-child(1) {
+    width: 80px;
+}
+
+.product-data-table th:nth-child(3),
+.product-data-table td:nth-child(3) {
+    width: 100px;
+}
+
+.product-data-table th:nth-child(4),
+.product-data-table td:nth-child(4) {
+    width: 120px;
+}
+
+.product-data-table th:nth-child(6),
+.product-data-table td:nth-child(6),
+.product-data-table th:nth-child(7),
+.product-data-table td:nth-child(7) {
+    width: 140px;
+    font-size: 0.9em;
+}
+
+/* Product Image Thumbnail */
+
+.product-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+.product-data-table td:nth-child(5) {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* ... in descrption */
+}
+
+#data-status {
+    text-align: center;
+    padding: 20px;
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+/* Sort Filters */
+
+.product-data-table th.sortable {
+    cursor: pointer;
+}
+
+/* Making Responsive */
+
+@media (max-width: 900px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main";
+        padding: 10px;
+    }
+
+    .sidebar-filters {
+        position: static;
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platzi Fake Store Data Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <header class="dashboard-header">
+            <h1>Product Explorer Dashboard</h1>
+            <p>Data from Platzi Fake Store API (You can sort by clicking in title or price)</p>
+        </header>
+
+        <aside class="sidebar-filters">
+            <h2>Filters</h2>
+
+            <div class="filter-group">
+                <label for="search-input">Search Title / Description</label>
+                <input type="text" id="search-input" placeholder="e.g., shirt, keyboard, cozy">
+            </div>
+
+            <div class="filter-group">
+                <label for="category-select">Category</label>
+                <select id="category-select">
+                    <option value="">All Categories</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="price-range">Price Range</label>
+                <div class="range-inputs">
+                    <input type="number" id="min-price" placeholder="Min Price ($)" value="0" min="0">
+                    <span>-</span>
+                    <input type="number" id="max-price" placeholder="Max Price ($)">
+                </div>
+            </div>
+
+            <button class="apply-filters-btn">Apply Filters</button>
+            <button class="clear-filters-btn">Clear Filters</button>
+        </aside>
+
+        <main class="data-view">
+            <h2>Product List</h2>
+
+            <div class="table-responsive">
+                <table class="product-data-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th class="sortable" id="sortable-title" data-sort="title">
+                                Title <span class="sort-icon" id="sort-title-icon"></span>
+                            </th>
+                            <th class="sortable" id="sortable-price" data-sort="price">
+                                Price <span class="sort-icon" id="sort-price-icon"></span>
+                            </th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Created At</th>
+                            <th>Updated At</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-data-body" aria-live="polite">
+                        <!-- js add some tr and td here, for products showing -->
+                    </tbody>
+                </table>
+                <h2 id="error-msg" aria-live="assertive" role="alert"></h2>
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+<script src="app.js"></script>
+
+</html>
